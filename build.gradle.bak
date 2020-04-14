@@ -1,0 +1,61 @@
+plugins {
+    id 'java'
+    id 'org.jetbrains.kotlin.jvm' version '1.3.71'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    maven { url 'https://packages.confluent.io/maven/' }
+    maven {url  "https://jetbrains.bintray.com/lets-plot-maven"}
+    maven {url "https://dl.bintray.com/mipt-npm/scientifik"}
+    maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.71"
+    compile 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.71'
+
+    // logging
+    compile 'org.slf4j:slf4j-api:1.7.25'
+    compile 'org.slf4j:slf4j-log4j12:1.7.25'
+
+    // JSON serialization
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.9.6'
+    compile 'com.fasterxml.jackson.module:jackson-module-kotlin:2.9.6'
+
+    // Kafka
+    compile 'org.apache.kafka:kafka-clients:2.0.0'
+
+    // Lets-plot: https://github.com/JetBrains/lets-plot-kotlin
+    compile "org.openjfx:javafx-swing:13"
+    compile "org.openjfx:javafx:13"
+    compile "org.jetbrains.lets-plot:lets-plot-jfx:1.3.1"
+    compile "org.jetbrains.lets-plot:lets-plot-kotlin-api:0.0.9-SNAPSHOT"
+    compile "org.jetbrains.lets-plot:lets-plot-common:1.3.1"
+    compile "org.jetbrains.lets-plot:kotlin-frontend-api:0.0.8-SNAPSHOT"
+
+    // Kmath: https://github.com/mipt-npm/kmath
+    api("scientifik:kmath-core:0.1.3")
+
+    // Kravis: https://github.com/holgerbrandl/kravis
+    compile "com.github.holgerbrandl:kravis:0.5"
+
+    // Kotlin-statistics: https://github.com/thomasnield/kotlin-statistics
+    compile 'org.nield:kotlin-statistics:1.2.1'
+
+
+}
+
+
+compileKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
+compileTestKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
